@@ -23,9 +23,8 @@
     </div>
     <canvas id="canvas"></canvas>
     <div class="control-bar">
-      <div id="pen">
-      <div class="pen-container">
-          <button>Pen</button>
+      <div id="pen-icon">
+        <div class="pen-container">
           <div class="slidecontainer">
             <input
               type="range"
@@ -43,13 +42,9 @@
               class="lightblue-color pen-color"
               value="lightblue"
             ></button>
-            <input
-              type="color"
-              name="pickColor"
-              id="pickAColor"
-              class="pen-color"
-            />
+            <button class="pen-color"></button>
           </div>
+        </div>
       </div>
       <div id="eraser"></div>
       <div id="text"></div>

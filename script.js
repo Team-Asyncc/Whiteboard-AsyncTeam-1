@@ -1,35 +1,26 @@
 // constants and variables
 const canvas = /** @type {HTMLCanvasElement} */ (
-  document.getElementById("canvas")
+  document.getElementById('canvas')
 );
 
-const pencil = document.getElementById("cursor");
-document.addEventListener("mousemove", (e) => {
+const pencil = document.getElementById('cursor');
+document.addEventListener('mousemove', (e) => {
   pencil.style.left = `${e.clientX}px`;
   pencil.style.top = `${e.clientY}px`;
 });
-const ctx = canvas.getContext("2d");
-const penSlider = document.getElementById("penSlider");
+const ctx = canvas.getContext('2d');
+const penSlider = document.getElementById('penSlider');
 const pen = {
   width: 5,
-  color: "black",
+  color: 'black',
 };
-const penColor = document.querySelectorAll(".pen-color");
+const penColor = document.querySelectorAll('.pen-color');
 
-///////////////
-const pickAColor = document.getElementById("pickAColor");
-console.log(pickAColor);
-pickAColor.addEventListener("change", (e) => {
-  console.log(e.target.value);
-  pen.color = e.target.value;
-});
-
-////
 let painting = false;
 
 //resizing
-canvas.height = window.innerHeight - 56;
-canvas.width = window.innerWidth - 5;
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 
 //draw
 function startPosition(e) {
@@ -44,7 +35,7 @@ function endPosition() {
 function draw(e) {
   if (!painting) return;
   ctx.lineWidth = pen.width;
-  ctx.lineCap = "round";
+  ctx.lineCap = 'round';
   ctx.strokeStyle = pen.color;
   ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
 
@@ -53,14 +44,14 @@ function draw(e) {
   ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
 }
 
-canvas.addEventListener("mousedown", startPosition);
-canvas.addEventListener("mouseup", endPosition);
-canvas.addEventListener("mousemove", draw);
+canvas.addEventListener('mousedown', startPosition);
+canvas.addEventListener('mouseup', endPosition);
+canvas.addEventListener('mousemove', draw);
 
 //pen color change
 // console.log(penColor);
 penColor.forEach((pcolor) => {
-  pcolor.addEventListener("click", changePenColor);
+  pcolor.addEventListener('click', changePenColor);
 });
 function changePenColor() {
   // console.log(this.value);
@@ -71,3 +62,17 @@ function changePenColor() {
 //   pen.color = e.value;
 // });
 // console.log(pickAColor.onclick());
+
+const penIcon = document.getElementById('pen-icon');
+const penContainer = document.getElementsByClassName('pen-container')[0];
+
+penIcon.addEventListener('click', () => {
+  penContainer.classList.toggle('display-pen-container');
+});
+
+const pickAColor = document.getElementById('pickAColor');
+console.log(pickAColor);
+pickAColor.addEventListener('change', (e) => {
+  console.log(e.target.value);
+  pen.color = e.target.value;
+});

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
 * {
   margin: 0;
@@ -15,15 +15,18 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 }
 .nav {
+  position: fixed;
+  z-index: 1;
   top: 0px;
   height: 52px;
   width: 100vw;
   background-color: #585858;
   border-bottom: 2px #444444 solid;
   align-self: flex-start;
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   color: whitesmoke;
   display: flex;
   justify-content: space-between;
@@ -83,7 +86,7 @@ img {
   justify-content: space-around;
   align-items: center;
 }
-#pen {
+#pen-icon {
   width: 40px;
   height: 40px;
   z-index: 2;
@@ -126,7 +129,42 @@ img {
   border-radius: 50%;
 }
 
-.container .side-btns .pen-container .penColor .pen-color {
-  height: 20px;
-  width: 30px;
+.pen-container {
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: -100px;
+  left: 15px;
+  height: fit-content;
+  width: fit-content;
+  display: none;
+  background-color: rgba(121, 121, 121, 0.8);
+  padding: 0.5rem;
+  gap: 1rem;
+  border-radius: 0.25rem;
+}
+
+.display-pen-container {
+  display: flex;
+}
+
+.penColor .pen-color {
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 3rem;
+}
+.red-color {
+  background-color: red;
+}
+.yellow-color {
+  background-color: yellow;
+}
+.lightblue-color {
+  background-color: lightblue;
+}
+
+#pickAColor {
+  border-radius: 3rem;
 }

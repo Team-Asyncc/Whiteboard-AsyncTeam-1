@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Whiteboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -42,8 +46,8 @@
               class="lightblue-color pen-color"
               value="lightblue"
             ></button>
-            <button class="pen-color"></button>
           </div>
+          <button class="color-picker pen-color" id="colorPickerBtn"></button>
         </div>
       </div>
       <div id="eraser"></div>
@@ -52,6 +56,7 @@
       <div id="redo"></div>
       <div id="pointer"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

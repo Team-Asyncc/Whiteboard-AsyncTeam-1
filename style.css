@@ -134,8 +134,8 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  top: -100px;
-  left: 15px;
+  top: -150px;
+  left: 25px;
   height: fit-content;
   width: fit-content;
   display: none;
@@ -163,8 +163,4 @@ img {
 }
 .lightblue-color {
   background-color: lightblue;
-}
-
-#pickAColor {
-  border-radius: 3rem;
 }

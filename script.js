@@ -68,6 +68,10 @@ const penContainer = document.getElementsByClassName('pen-container')[0];
 
 penIcon.addEventListener('click', () => {
   penContainer.classList.toggle('display-pen-container');
+  removelisteners(starterase, enderase, eraseit);
+  canvas.addEventListener('mousedown', startPosition);
+  canvas.addEventListener('mouseup', endPosition);
+  canvas.addEventListener('mousemove', draw);
 });
 
 const colorPickerBtn = document.getElementById('colorPickerBtn');
@@ -115,3 +119,46 @@ pickr.on('change', (...args) => {
   let color = args[0].toRGBA();
   pen.color = `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`;
 });
+
+//Erase feature--------------------------------------------
+const eraserBtn = document.getElementById('eraser');
+const eraseSlider = document.getElementById('eraserSlider');
+let erase = false;
+const eraser = {
+  height: 50,
+  width: 50,
+};
+function starterase(e) {
+  erase = true;
+  eraser.width = eraseSlider.value;
+  eraser.height = eraseSlider.value;
+  draw(e);
+}
+function enderase() {
+  erase = false;
+  ctx.beginPath();
+}
+function eraseit(e) {
+  if (!erase) return;
+  ctx.clearRect(
+    e.clientX - canvas.offsetLeft,
+    e.clientY - canvas.offsetTop,
+    eraser.height,
+    eraser.width
+  );
+}
+eraserBtn.addEventListener('click', () => {
+  canvas.addEventListener('mousedown', starterase);
+  canvas.addEventListener('mouseup', enderase);
+  canvas.addEventListener('mousemove', eraseit);
+  removelisteners(startPosition, endPosition, draw);
+  document
+    .getElementsByClassName('slidecontainerforeraser')[0]
+    .classList.toggle('display-pen-container');
+});
+
+function removelisteners(a, b, c) {
+  canvas.removeEventListener('mousedown', a);
+  canvas.removeEventListener('mouseup', b);
+  canvas.removeEventListener('mousemove', c);
+}

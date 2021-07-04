@@ -209,8 +209,11 @@ img {
 #eraser .slidecontainerforeraser {
   display: none;
   position: relative;
-  bottom: 30px;
+  bottom: 90px;
   left: -45px;
   height: fit-content;
   width: fit-content;
+  background-color: rgba(121, 121, 121, 0.8);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
 }

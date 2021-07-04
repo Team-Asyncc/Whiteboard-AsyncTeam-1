@@ -106,13 +106,13 @@ img {
 }
 .control-bar {
   position: fixed;
-  background: #dddddd;
+  /* background: #dddddd; */
   width: 60vw;
   height: 55px;
   box-shadow: 0px 10px 32px -10px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 10px 32px -10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 10px 32px -10px rgba(0, 0, 0, 0.75);
-  /* background-color: #858282; */
+  border: 0.5px solid rgba(121, 121, 121, 0.3);
   border-radius: 20px;
   z-index: 1;
   bottom: 2%;
@@ -169,6 +169,8 @@ img {
   padding: 5px;
   background-color: white;
   border-radius: 40%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 .pen-container {
   position: absolute;
@@ -223,4 +225,14 @@ img {
   position: absolute;
   transform: translate(-50%, -50%);
   pointer-events: none;
+}
+
+.icon:hover {
+  background-color: #ffbcbc;
+  transform: scale(1.2);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.hide {
+  display: none;
 }

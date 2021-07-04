@@ -17,6 +17,8 @@ const pen = {
 const penColor = document.querySelectorAll('.pen-color');
 
 let painting = false;
+const undoTracker = [];
+let index = -1;
 
 //resizing
 canvas.height = window.innerHeight;
@@ -30,6 +32,9 @@ function startPosition(e) {
   draw(e);
 }
 function endPosition() {
+  undoTracker.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  index += 1;
+
   painting = false;
   ctx.beginPath();
 }
@@ -184,7 +189,6 @@ function startline(e) {
   startpoint.classList.add('pointer');
   startpoint.style.top = `${e.clientY}px`;
   startpoint.style.left = `${e.clientX}px`;
-  console.log(startpoint);
   document.body.append(startpoint);
 }
 
@@ -192,5 +196,42 @@ function endline(e) {
   ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
   ctx.stroke();
   document.body.removeChild(document.getElementsByClassName('pointer')[0]);
+
+  undoTracker.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  index += 1;
 }
 function drawline() {}
+
+/* Undo  ------------------------------------*/
+const undo = document.getElementById('undo');
+undo.addEventListener('click', doUndo);
+
+function doUndo() {
+  if (index <= 0) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  index -= 1;
+  undoTracker.pop();
+  ctx.putImageData(undoTracker[index], 0, 0);
+}
+
+// control bar cursor hide
+const controlBar = document.querySelector('.control-bar');
+const icons = document.querySelectorAll('.icon');
+controlBar.addEventListener('mouseover', () => {
+  pencil.classList.add('hide');
+});
+
+controlBar.addEventListener('mouseout', () => {
+  pencil.classList.remove('hide');
+});
+
+icons.forEach((icon) => {
+  icon.addEventListener('mouseover', () => {
+    pencil.classList.add('hide');
+  });
+
+  // icon.addEventListener('mouseou', ()=> {
+  //   pencil.classList.add('hide');
+  // })
+});

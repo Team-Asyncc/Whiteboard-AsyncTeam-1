@@ -2,10 +2,16 @@
 const canvas = /** @type {HTMLCanvasElement} */ (
   document.getElementById("canvas")
 );
+
+const pencil = document.getElementById("cursor");
+document.addEventListener("mousemove", (e) => {
+  pencil.style.left = `${e.clientX}px`;
+  pencil.style.top = `${e.clientY}px`;
+});
 const ctx = canvas.getContext("2d");
 const penSlider = document.getElementById("penSlider");
 const pen = {
-  width: 10,
+  width: 5,
   color: "black",
 };
 const penColor = document.querySelectorAll(".pen-color");
@@ -22,14 +28,8 @@ pickAColor.addEventListener("change", (e) => {
 let painting = false;
 
 //resizing
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
-function resizeCanvas() {
-  canvas.height = window.innerHeight;
-  canvas.width = window.innerWidth;
-  //   console.log("called");
-}
-window.addEventListener("resize", resizeCanvas);
+canvas.height = window.innerHeight - 56;
+canvas.width = window.innerWidth - 5;
 
 //draw
 function startPosition(e) {
@@ -46,10 +46,11 @@ function draw(e) {
   ctx.lineWidth = pen.width;
   ctx.lineCap = "round";
   ctx.strokeStyle = pen.color;
-  ctx.lineTo(e.clientX, e.clientY);
+  ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+
   ctx.stroke();
   ctx.beginPath();
-  ctx.moveTo(e.clientX, e.clientY);
+  ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
 }
 
 canvas.addEventListener("mousedown", startPosition);

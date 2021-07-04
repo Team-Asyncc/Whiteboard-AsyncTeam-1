@@ -8,9 +8,23 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="side-btns">
-        <div class="pen-container">
+    <div id="cursor">
+      <img src="https://img.icons8.com/nolan/64/pencil-tip.png" />
+    </div>
+    <div class="nav">
+      <div class="left-nav">
+        <img src="./Images/Async-logo.png" alt="0" id="logo" />
+        <p>Async Jam board</p>
+        <p>Untitled</p>
+      </div>
+      <div class="right-nav">
+        <img src="https://img.icons8.com/nolan/64/upload.png" id="upload" />
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div class="control-bar">
+      <div id="pen">
+      <div class="pen-container">
           <button>Pen</button>
           <div class="slidecontainer">
             <input
@@ -36,9 +50,12 @@
               class="pen-color"
             />
           </div>
-        </div>
       </div>
-      <canvas id="canvas"></canvas>
+      <div id="eraser"></div>
+      <div id="text"></div>
+      <div id="undo"></div>
+      <div id="redo"></div>
+      <div id="pointer"></div>
     </div>
     <script src="script.js"></script>
   </body>

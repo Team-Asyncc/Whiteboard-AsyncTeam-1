@@ -76,3 +76,11 @@ pickAColor.addEventListener('change', (e) => {
   console.log(e.target.value);
   pen.color = e.target.value;
 });
+
+////////////////////////
+//Background feature
+// const gridLarge = document.getElementById('grid');
+// const dot = document.getElementById('dot');
+// const plain = document.getElementById('plain');
+// const backgroundList = document.querySelector('.backgroundList');
+// const background = document.querySelector('.background');

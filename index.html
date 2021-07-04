@@ -15,7 +15,14 @@
       <div class="left-nav">
         <img src="./Images/Async-logo.png" alt="0" id="logo" />
         <p>Async Jam board</p>
-        <p>Untitled</p>
+        <!-- <div class="backgroundList">
+          Background
+          <ul class="background">
+            <li id="grid">Grid</li>
+            <li id="dot">Dots</li>
+            <li id="plain">Plain</li>
+          </ul>
+        </div> -->
       </div>
       <div class="right-nav">
         <img src="https://img.icons8.com/nolan/64/upload.png" id="upload" />
@@ -23,7 +30,10 @@
     </div>
     <canvas id="canvas"></canvas>
     <div class="control-bar">
-      <div id="pen-icon">
+      <div class="icon" id="pen-icon">
+        <img
+          src="https://img.icons8.com/material-sharp/96/000000/edit--v1.png"
+        />
         <div class="pen-container">
           <div class="slidecontainer">
             <input
@@ -46,11 +56,21 @@
           </div>
         </div>
       </div>
-      <div id="eraser"></div>
-      <div id="text"></div>
-      <div id="undo"></div>
-      <div id="redo"></div>
-      <div id="pointer"></div>
+      <div class="icon" id="eraser">
+        <img src="https://img.icons8.com/ios-glyphs/50/000000/erase.png" />
+      </div>
+      <div class="icon" id="text">
+        <img src="https://img.icons8.com/ios-glyphs/90/000000/text.png" />
+      </div>
+      <div class="icon" id="undo">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/undo.png" />
+      </div>
+      <div class="icon" id="redo">
+        <img src="https://img.icons8.com/ios-filled/50/000000/line.png" />
+      </div>
+      <div class="icon" id="shape">
+        <img src="https://img.icons8.com/windows/96/000000/shape.png" />
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

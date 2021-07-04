@@ -68,19 +68,97 @@ const penContainer = document.getElementsByClassName('pen-container')[0];
 
 penIcon.addEventListener('click', () => {
   penContainer.classList.toggle('display-pen-container');
+  removelisteners(starterase, enderase, eraseit);
+  canvas.addEventListener('mousedown', startPosition);
+  canvas.addEventListener('mouseup', endPosition);
+  canvas.addEventListener('mousemove', draw);
 });
 
-const pickAColor = document.getElementById('pickAColor');
-console.log(pickAColor);
-pickAColor.addEventListener('change', (e) => {
-  console.log(e.target.value);
-  pen.color = e.target.value;
+const colorPickerBtn = document.getElementById('colorPickerBtn');
+
+const pickr = Pickr.create({
+  el: '.color-picker',
+  theme: 'classic',
+
+  swatches: [
+    'rgba(244, 67, 54, 1)',
+    'rgba(233, 30, 99, 0.95)',
+    'rgba(156, 39, 176, 0.9)',
+    'rgba(103, 58, 183, 0.85)',
+    'rgba(63, 81, 181, 0.8)',
+    'rgba(33, 150, 243, 0.75)',
+    'rgba(3, 169, 244, 0.7)',
+    'rgba(0, 188, 212, 0.7)',
+    'rgba(0, 150, 136, 0.75)',
+    'rgba(76, 175, 80, 0.8)',
+    'rgba(139, 195, 74, 0.85)',
+    'rgba(205, 220, 57, 0.9)',
+    'rgba(255, 235, 59, 0.95)',
+    'rgba(255, 193, 7, 1)',
+  ],
+
+  components: {
+    preview: true,
+    opacity: true,
+    hue: true,
+
+    interaction: {
+      hex: true,
+      rgba: true,
+      hsla: true,
+      hsva: true,
+      cmyk: true,
+      input: true,
+      clear: true,
+      save: true,
+    },
+  },
 });
 
-////////////////////////
-//Background feature
-// const gridLarge = document.getElementById('grid');
-// const dot = document.getElementById('dot');
-// const plain = document.getElementById('plain');
-// const backgroundList = document.querySelector('.backgroundList');
-// const background = document.querySelector('.background');
+pickr.on('change', (...args) => {
+  let color = args[0].toRGBA();
+  pen.color = `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`;
+});
+
+//Erase feature--------------------------------------------
+const eraserBtn = document.getElementById('eraser');
+const eraseSlider = document.getElementById('eraserSlider');
+let erase = false;
+const eraser = {
+  height: 50,
+  width: 50,
+};
+function starterase(e) {
+  erase = true;
+  eraser.width = eraseSlider.value;
+  eraser.height = eraseSlider.value;
+  draw(e);
+}
+function enderase() {
+  erase = false;
+  ctx.beginPath();
+}
+function eraseit(e) {
+  if (!erase) return;
+  ctx.clearRect(
+    e.clientX - canvas.offsetLeft,
+    e.clientY - canvas.offsetTop,
+    eraser.height,
+    eraser.width
+  );
+}
+eraserBtn.addEventListener('click', () => {
+  canvas.addEventListener('mousedown', starterase);
+  canvas.addEventListener('mouseup', enderase);
+  canvas.addEventListener('mousemove', eraseit);
+  removelisteners(startPosition, endPosition, draw);
+  document
+    .getElementsByClassName('slidecontainerforeraser')[0]
+    .classList.toggle('display-pen-container');
+});
+
+function removelisteners(a, b, c) {
+  canvas.removeEventListener('mousedown', a);
+  canvas.removeEventListener('mouseup', b);
+  canvas.removeEventListener('mousemove', c);
+}

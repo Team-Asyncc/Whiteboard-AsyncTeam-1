@@ -146,7 +146,7 @@ img {
 }
 
 .display-pen-container {
-  display: flex;
+  display: flex !important;
 }
 
 .penColor .pen-color {
@@ -163,4 +163,13 @@ img {
 }
 .lightblue-color {
   background-color: lightblue;
+}
+
+#eraser .slidecontainerforeraser {
+  display: none;
+  position: relative;
+  bottom: 30px;
+  left: -45px;
+  height: fit-content;
+  width: fit-content;
 }

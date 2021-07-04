@@ -2,16 +2,22 @@
 const canvas = /** @type {HTMLCanvasElement} */ (
   document.getElementById("canvas")
 );
+
+const pencil = document.getElementById("cursor");
+document.addEventListener("mousemove", (e) => {
+  pencil.style.left = `${e.clientX}px`;
+  pencil.style.top = `${e.clientY}px`;
+});
 const ctx = canvas.getContext("2d");
 let painting = false;
 
 const pen = {
-  width: 10,
+  width: 5,
   color: "black",
 };
 //resizing
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+canvas.height = window.innerHeight - 56;
+canvas.width = window.innerWidth - 5;
 function resizeCanvas() {
   canvas.height = window.innerHeight;
   canvas.width = window.innerWidth;
@@ -34,10 +40,10 @@ function draw(e) {
   ctx.lineCap = "round";
   ctx.strokeStyle = pen.color;
 
-  ctx.lineTo(e.clientX, e.clientY);
+  ctx.lineTo(e.clientX, e.clientY - 50);
   ctx.stroke();
   ctx.beginPath();
-  ctx.moveTo(e.clientX, e.clientY);
+  ctx.moveTo(e.clientX, e.clientY - 50);
 }
 
 canvas.addEventListener("mousedown", startPosition);

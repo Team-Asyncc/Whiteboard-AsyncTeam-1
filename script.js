@@ -26,6 +26,7 @@ canvas.width = window.innerWidth;
 function startPosition(e) {
   painting = true;
   pen.width = penSlider.value;
+  ctx.beginPath();
   draw(e);
 }
 function endPosition() {
@@ -69,6 +70,7 @@ const penContainer = document.getElementsByClassName('pen-container')[0];
 penIcon.addEventListener('click', () => {
   penContainer.classList.toggle('display-pen-container');
   removelisteners(starterase, enderase, eraseit);
+  removelisteners(startline, endline, drawline);
   canvas.addEventListener('mousedown', startPosition);
   canvas.addEventListener('mouseup', endPosition);
   canvas.addEventListener('mousemove', draw);
@@ -152,6 +154,7 @@ eraserBtn.addEventListener('click', () => {
   canvas.addEventListener('mouseup', enderase);
   canvas.addEventListener('mousemove', eraseit);
   removelisteners(startPosition, endPosition, draw);
+  removelisteners(startline, endline, drawline);
   document
     .getElementsByClassName('slidecontainerforeraser')[0]
     .classList.toggle('display-pen-container');
@@ -162,3 +165,32 @@ function removelisteners(a, b, c) {
   canvas.removeEventListener('mouseup', b);
   canvas.removeEventListener('mousemove', c);
 }
+// line drawing feature ------------------------------
+const linedraw = document.getElementById('line');
+linedraw.addEventListener('click', () => {
+  removelisteners(starterase, enderase, eraseit);
+  removelisteners(startPosition, endPosition, draw);
+  canvas.addEventListener('mousedown', startline);
+  canvas.addEventListener('mouseup', endline);
+  canvas.addEventListener('mousemove', drawline);
+});
+
+function startline(e) {
+  makeline = true;
+  ctx.beginPath();
+  ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+  let startpoint = new Image();
+  startpoint.src = './Images/startpoint.png';
+  startpoint.classList.add('pointer');
+  startpoint.style.top = `${e.clientY}px`;
+  startpoint.style.left = `${e.clientX}px`;
+  console.log(startpoint);
+  document.body.append(startpoint);
+}
+
+function endline(e) {
+  ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+  ctx.stroke();
+  document.body.removeChild(document.getElementsByClassName('pointer')[0]);
+}
+function drawline() {}

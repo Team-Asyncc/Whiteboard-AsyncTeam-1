@@ -6,3 +6,8 @@
 canvas {
   border: 1px red solid;
 }
+
+.container .side-btns .pen-container .penColor .pen-color {
+  height: 20px;
+  width: 30px;
+}

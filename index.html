@@ -8,7 +8,38 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <canvas id="canvas"></canvas>
+    <div class="container">
+      <div class="side-btns">
+        <div class="pen-container">
+          <button>Pen</button>
+          <div class="slidecontainer">
+            <input
+              type="range"
+              min="2"
+              max="20"
+              value="2"
+              class="slider"
+              id="penSlider"
+            />
+          </div>
+          <div class="penColor" id="penColor">
+            <button class="red-color pen-color" value="red"></button>
+            <button class="yellow-color pen-color" value="yellow"></button>
+            <button
+              class="lightblue-color pen-color"
+              value="lightblue"
+            ></button>
+            <input
+              type="color"
+              name="pickColor"
+              id="pickAColor"
+              class="pen-color"
+            />
+          </div>
+        </div>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

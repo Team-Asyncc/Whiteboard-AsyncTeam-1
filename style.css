@@ -125,3 +125,8 @@ img {
   background-color: white;
   border-radius: 50%;
 }
+
+.container .side-btns .pen-container .penColor .pen-color {
+  height: 20px;
+  width: 30px;
+}

@@ -9,6 +9,9 @@ Async Whiteboard is a cloud-enabled, offline-storage compatible, VanillaJS-power
 - See results right on your screen
 - ✨Magic ✨
 
+## Deployment
+[Whiteboard](https://team-asyncc.github.io/Whiteboard-AsyncTeam-1/)
+
 ## Features
 
 - The pencil tool can be used to draw with a slider for size variation.
@@ -25,7 +28,8 @@ Async Whiteboard is a cloud-enabled, offline-storage compatible, VanillaJS-power
 - [CSS3](https://cssreference.io) - Because Cascade is king!
 - [VanillaJS](https://javascript.com) - Because interactivity.
 
-## Screenshots
+## Screenshot
+![image](https://user-images.githubusercontent.com/54011160/124472761-22100f00-ddbc-11eb-979f-cff666785c7c.png)
 
 ## Contributors
 - [@VivekBcloud](https://github.com/VivekBcloud)

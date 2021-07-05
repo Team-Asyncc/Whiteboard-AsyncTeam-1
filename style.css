@@ -34,42 +34,12 @@ body {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
-.nav>p {
+.nav > p {
   letter-spacing: 3px;
   font-weight: 700;
   color: rgba(121, 116, 116, 0.5);
 }
 
-/* .backgroundList {
-  margin-left: 50px;
-  padding-top: 37%;
-  align-self: center;
-  height: auto;
-}
-.background {
-  display: none;
-  border-top: 2px white solid;
-  width: auto;
-  list-style-type: none;
-  top: 100px;
-}
-.backgroundFall {
-  display: flex !important;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-li {
-  width: 100%;
-  height: 100%;
-  color: whitesmoke;
-  background-color: #343434;
-  text-align: start;
-  padding: 5px 5px;
-}
-li:hover {
-  background-color: #777777;
-} */
 #logo {
   height: 50px;
   width: 50px;
@@ -122,48 +92,6 @@ img {
   align-items: center;
 }
 
-/* #pen-icon {
-  width: 40px;
-  height: 40px;
-  z-index: 2;
-  background-color: white;
-  border-radius: 50%;
-}
-#eraser {
-  width: 40px;
-  height: 40px;
-  z-index: 2;
-  background-color: white;
-  border-radius: 50%;
-}
-#text {
-  width: 40px;
-  height: 40px;
-  z-index: 2;
-  background-color: white;
-  border-radius: 50%;
-}
-#undo {
-  width: 40px;
-  height: 40px;
-  z-index: 2;
-  background-color: white;
-  border-radius: 50%;
-}
-#redo {
-  width: 40px;
-  height: 40px;
-  z-index: 2;
-  background-color: white;
-  border-radius: 50%;
-}
-#shape {
-  width: 40px;
-  height: 40px;
-  z-index: 2;
-  background-color: white;
-  border-radius: 50%;
-} */
 .icon {
   width: 40px;
   position: relative;
@@ -177,12 +105,12 @@ img {
 }
 
 .pen-container {
-  position: absolute;
-  top: -50px;
-  left: 10px;
+  display: none;
+  position: relative;
+  bottom: 90px;
+  left: -45px;
   height: fit-content;
   width: fit-content;
-  display: none;
   background-color: rgba(121, 121, 121, 0.8);
   padding: 0.5rem;
   border-radius: 0.25rem;
@@ -348,7 +276,7 @@ img {
   opacity: 0.6;
 }
 
-.active-tool>span {
+.active-tool > span {
   background-color: rgb(82, 82, 82);
   border-radius: 5px;
   padding: 2.5px 16px;
@@ -374,4 +302,3 @@ img {
 .far:hover {
   filter: brightness(90%);
 }
-

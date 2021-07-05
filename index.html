@@ -26,6 +26,29 @@
           </ul>
         </div> -->
     </div>
+    <div class="left-tool-bar">
+      <div class="main-color-picker">
+        <button
+          class="color color-swatch-black pen-color"
+          value="#3c4043"
+        ></button>
+        <button
+          class="color color-swatch-blue pen-color"
+          value="#19acc0"
+        ></button>
+        <button
+          class="color color-swatch-red pen-color"
+          value="#d9453c"
+        ></button>
+        <button
+          class="color color-swatch-white pen-color"
+          value="#fff"
+        ></button>
+      </div>
+      <div class="custom-color-picker">
+        <button class="color-picker pen-color" id="colorPickerBtn"></button>
+      </div>
+    </div>
     <canvas id="canvas"></canvas>
     <div class="control-bar">
       <div class="icon" id="pen-icon">
@@ -43,15 +66,6 @@
               id="penSlider"
             />
           </div>
-          <div class="penColor" id="penColor">
-            <button class="red-color pen-color" value="red"></button>
-            <button class="yellow-color pen-color" value="yellow"></button>
-            <button
-              class="lightblue-color pen-color"
-              value="lightblue"
-            ></button>
-          </div>
-          <button class="color-picker pen-color" id="colorPickerBtn"></button>
         </div>
       </div>
       <div class="icon" id="eraser">

@@ -37,7 +37,7 @@ body {
 .nav > p {
   letter-spacing: 3px;
   font-weight: 700;
-  color: rgba(56, 53, 53, 0.5);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .bgColor {
@@ -47,8 +47,11 @@ body {
   align-items: center;
   width: 300px;
   right: 50px;
+  top: 6px;
   font-family: 'Montserrat', sans-serif;
-  color: rgba(56, 53, 53, 0.5);
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  border-bottom: 10px solid transparent;
 }
 .bg-btn {
   height: 30px;
@@ -104,7 +107,7 @@ img {
 
 .control-bar {
   position: fixed;
-  /* background: #dddddd; */
+  background: #ffffff;
   width: 60vw;
   height: 55px;
   box-shadow: 0px 10px 32px -10px rgba(0, 0, 0, 0.75);
@@ -152,18 +155,6 @@ img {
   width: 40px;
   border: none;
   border-radius: 3rem;
-}
-
-.red-color {
-  background-color: red;
-}
-
-.yellow-color {
-  background-color: yellow;
-}
-
-.lightblue-color {
-  background-color: lightblue;
 }
 
 .slidecontainer {
@@ -235,13 +226,14 @@ img {
 .main-color-picker {
   display: flex;
   flex-direction: column;
-  /* position: absolute; */
+
   padding: 10px;
-  /* left: 15px; */
+
   border-radius: 20px;
   border: 0.5px solid rgba(121, 121, 121, 0.3);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  /* z-index: 5; */
+
+  background: #ffffff;
 }
 
 .color {

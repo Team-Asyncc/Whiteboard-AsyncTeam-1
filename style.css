@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@388;400&display=swap');
 
 * {
   margin: 0;
@@ -16,34 +16,27 @@ body {
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 .nav {
   position: fixed;
   z-index: 1;
   top: 0px;
-  height: 52px;
+  padding: 5px;
+  height: auto;
   width: 100vw;
-  background-color: #343434;
-  border-bottom: 2px #aaaaaa solid;
-  align-self: flex-start;
-  font-family: 'Titillium Web', sans-serif;
-  color: whitesmoke;
+  background-color: aliceblue;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
-.left-nav {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-p {
-  padding: 0px 50px;
 
-  font-size: 1em;
-  border-right: 1px whitesmoke solid;
-  user-select: none;
+.nav > p {
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: rgba(121, 116, 116, 0.5);
 }
+
 /* .backgroundList {
   margin-left: 50px;
   padding-top: 37%;

@@ -236,24 +236,40 @@ img {
   background-color: black;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.2;
+  opacity: 0.6;
 }
-#shapes .shape-container{
+#shapes .shape-container {
   display: none;
   position: absolute;
-  bottom:30px ;
-  left:0;
-  height:40px;
-  width:100px;
+  padding: 0.6rem;
+  bottom: 50px;
+  left: -20px;
+  height: auto;
+  width: auto;
+  border-radius: 1rem;
+  background-color: rgba(121, 121, 121, 0.411);
 }
-#shapes .shape-container .shape-btn{
-height: 80%;
-width: 30px;
-background-color: red;
-
+#shapes .shape-container .shape-btn {
+  height: 30px;
+  width: 30px;
 }
-.show-shapes{
-  display: flex !important; 
-  gap:5px;
+#shapes .shape-container .shape-btn:hover {
+  opacity: 0.6;
 }
-
+#shapes .shape-container #circleShape {
+  background-image: url('./Images/circle.png');
+  background-size: cover;
+}
+#shapes .shape-container #rectShape {
+  background-image: url('./Images/rectangle.png');
+  background-size: cover;
+}
+.show-shapes {
+  display: flex !important;
+  gap: 10px;
+}
+.rect-shape {
+  position: absolute;
+  background-color: black;
+  opacity: 0.6;
+}

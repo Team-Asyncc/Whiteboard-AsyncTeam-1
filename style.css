@@ -5,11 +5,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 canvas {
   border: 1px red solid;
   cursor: none;
   z-index: 0;
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -18,6 +20,7 @@ body {
   overflow: hidden;
   font-family: 'Montserrat', sans-serif;
 }
+
 .nav {
   position: fixed;
   z-index: 1;
@@ -31,7 +34,7 @@ body {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
-.nav > p {
+.nav>p {
   letter-spacing: 3px;
   font-weight: 700;
   color: rgba(121, 116, 116, 0.5);
@@ -72,16 +75,19 @@ li:hover {
   width: 50px;
   user-select: none;
 }
+
 .right-nav {
   display: flex;
   justify-content: flex-end;
   margin-right: 2.5%;
 }
+
 #upload {
   height: 40px;
   width: 40px;
   user-select: none;
 }
+
 #cursor {
   position: fixed;
   top: 50%;
@@ -92,11 +98,13 @@ li:hover {
   z-index: 1;
   pointer-events: none;
 }
+
 img {
   width: 100%;
   height: 100%;
   user-select: none;
 }
+
 .control-bar {
   position: fixed;
   /* background: #dddddd; */
@@ -113,6 +121,7 @@ img {
   justify-content: space-around;
   align-items: center;
 }
+
 /* #pen-icon {
   width: 40px;
   height: 40px;
@@ -166,6 +175,7 @@ img {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+
 .pen-container {
   position: absolute;
   flex-direction: column;
@@ -192,12 +202,15 @@ img {
   border: none;
   border-radius: 3rem;
 }
+
 .red-color {
   background-color: red;
 }
+
 .yellow-color {
   background-color: yellow;
 }
+
 .lightblue-color {
   background-color: lightblue;
 }
@@ -213,6 +226,7 @@ img {
   padding: 0.5rem;
   border-radius: 0.25rem;
 }
+
 .pointer {
   height: 30px;
   width: 30px;
@@ -230,6 +244,7 @@ img {
 .hide {
   display: none;
 }
+
 /* for display in canvas */
 .circle-shape {
   position: absolute;
@@ -238,6 +253,7 @@ img {
   transform: translate(-50%, -50%);
   opacity: 0.6;
 }
+
 #shapes .shape-container {
   display: none;
   position: absolute;
@@ -249,27 +265,63 @@ img {
   border-radius: 1rem;
   background-color: rgba(121, 121, 121, 0.411);
 }
+
 #shapes .shape-container .shape-btn {
   height: 30px;
   width: 30px;
 }
+
 #shapes .shape-container .shape-btn:hover {
   opacity: 0.6;
 }
+
 #shapes .shape-container #circleShape {
   background-image: url('./Images/circle.png');
   background-size: cover;
 }
+
 #shapes .shape-container #rectShape {
   background-image: url('./Images/rectangle.png');
   background-size: cover;
 }
+
 .show-shapes {
   display: flex !important;
   gap: 10px;
 }
+
 .rect-shape {
   position: absolute;
   background-color: black;
   opacity: 0.6;
+}
+
+
+
+
+.active-tool>span {
+  background-color: rgb(82, 82, 82);
+  border-radius: 5px;
+  padding: 2.5px 16px;
+  color: white;
+  font-size: 20px;
+  user-select: none;
+}
+
+/* save image  */
+.far {
+  font-size: 25px;
+  position: relative;
+  /* top: 1px; */
+  background-color: rgb(82, 82, 82);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  width: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.far:hover {
+  filter: brightness(90%);
 }

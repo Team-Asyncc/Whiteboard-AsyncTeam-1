@@ -376,7 +376,6 @@ function rectEnd() {
 function switchToPenTool() {
   isEraser = false;
   activeToolEl.textContent = 'Brush';
-
 }
 
 // Download Image
@@ -386,4 +385,33 @@ downloadBtn.addEventListener('click', () => {
   // Active Tool
   activeToolEl.textContent = 'Image Saved';
   setTimeout(switchToPenTool, 1500);
+});
+
+//background feature
+const bgBtn = document.querySelector('.backgroundBtn');
+const bgList = document.querySelector('.backgroundList');
+const dots = document.querySelector('#dots');
+const grid = document.querySelector('#grid');
+const plain = document.querySelector('#plain');
+
+//background color feature
+const bgColor1 = document.querySelector('#bgColor-red');
+const bgColor2 = document.querySelector('#bgColor-blue');
+const bgColor3 = document.querySelector('#bgColor-yellow');
+
+bgColor1.addEventListener('click', () => {
+  canvas.style.backgroundColor = '#38CC77';
+});
+
+bgColor2.addEventListener('click', () => {
+  canvas.style.backgroundColor = '#000000';
+});
+bgColor3.addEventListener('click', () => {
+  canvas.style.backgroundColor = '#ffffff';
+});
+
+const clear = document.querySelector('#clear');
+
+clear.addEventListener('click', () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 });

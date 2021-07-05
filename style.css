@@ -236,3 +236,10 @@ img {
 .hide {
   display: none;
 }
+.circle-shape {
+  position: absolute;
+  background-color: black;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.2;
+}

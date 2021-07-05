@@ -10,7 +10,8 @@ Async Whiteboard is a cloud-enabled, offline-storage compatible, VanillaJS-power
 - ✨Magic ✨
 
 ## Deployment
-[Whiteboard](https://team-asyncc.github.io/Whiteboard-AsyncTeam-1/)
+- [Whiteboard](https://team-asyncc.github.io/Whiteboard-AsyncTeam-1/)
+- [Video Demo](https://drive.google.com/file/d/11YuqjTsHLsTuzezRKOQ4mNiPLLx4dKb4/view?usp=sharing)
 
 ## Features
 

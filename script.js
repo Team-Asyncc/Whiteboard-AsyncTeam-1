@@ -76,6 +76,7 @@ penIcon.addEventListener('click', () => {
   penContainer.classList.toggle('display-pen-container');
   removelisteners(starterase, enderase, eraseit);
   removelisteners(startline, endline, drawline);
+  removelisteners(circleStart, circleEnd, circleDraw);
   canvas.addEventListener('mousedown', startPosition);
   canvas.addEventListener('mouseup', endPosition);
   canvas.addEventListener('mousemove', draw);
@@ -158,6 +159,7 @@ eraserBtn.addEventListener('click', () => {
   canvas.addEventListener('mousedown', starterase);
   canvas.addEventListener('mouseup', enderase);
   canvas.addEventListener('mousemove', eraseit);
+  removelisteners(circleStart, circleEnd, circleDraw);
   removelisteners(startPosition, endPosition, draw);
   removelisteners(startline, endline, drawline);
   document
@@ -175,6 +177,7 @@ const linedraw = document.getElementById('line');
 linedraw.addEventListener('click', () => {
   removelisteners(starterase, enderase, eraseit);
   removelisteners(startPosition, endPosition, draw);
+  removelisteners(circleStart, circleEnd, circleDraw);
   canvas.addEventListener('mousedown', startline);
   canvas.addEventListener('mouseup', endline);
   canvas.addEventListener('mousemove', drawline);
@@ -235,3 +238,48 @@ icons.forEach((icon) => {
   //   pencil.classList.add('hide');
   // })
 });
+
+//Shape feature
+const circleShape = document.getElementById('circleShape');
+circleShape.addEventListener('click', () => {
+  console.log('shape clicked');
+  removelisteners(startPosition, endPosition, draw);
+  removelisteners(startline, endline, drawline);
+  removelisteners(starterase, enderase, eraseit);
+  canvas.addEventListener('mousedown', circleStart);
+  canvas.addEventListener('mouseup', circleEnd);
+  canvas.addEventListener('mousemove', circleDraw);
+});
+
+let div, posY;
+let makeShape = false;
+function circleStart(e) {
+  makeShape = true;
+  div = document.createElement('div');
+  div.classList.add('circle-shape');
+  div.style.top = `${e.clientY}px`;
+  div.style.left = `${e.clientX}px`;
+  posY = e.clientY;
+  document.body.append(div);
+}
+function circleDraw(e) {
+  if (!makeShape) return;
+  let coordinate = Math.abs(posY - e.clientY);
+  div.style.height = `${coordinate}px`;
+  div.style.width = `${coordinate}px`;
+}
+function circleEnd() {
+  removelisteners(circleStart, circleEnd, circleDraw);
+  makeShape = false;
+  ctx.beginPath();
+  const cc = document.getElementsByClassName('circle-shape')[0];
+  let left = window.getComputedStyle(cc).left.slice(0, -2);
+  let top = window.getComputedStyle(cc).top.slice(0, -2);
+  let width = window.getComputedStyle(cc).width.slice(0, -2);
+  ctx.arc(left, top, width / 2, 0, 360);
+  document.body.removeChild(cc);
+  ctx.fillStyle = pen.color;
+  ctx.fill();
+  undoTracker.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  index += 1;
+}

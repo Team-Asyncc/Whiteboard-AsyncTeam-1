@@ -279,7 +279,7 @@ function circleEnd() {
   ctx.arc(left, top, width / 2, 0, 360);
   document.body.removeChild(cc);
   ctx.fillStyle = pen.color;
-  ctx.fill();
+  ctx.stroke();
   undoTracker.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
   index += 1;
 }

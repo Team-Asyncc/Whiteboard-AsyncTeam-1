@@ -25,10 +25,10 @@ body {
   position: fixed;
   z-index: 1;
   top: 0px;
-  padding: 5px;
+  padding: 10px;
   height: auto;
   width: 100vw;
-  background-color: aliceblue;
+  background-color: rgb(216, 235, 253);
   display: flex;
   justify-content: center;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
@@ -37,7 +37,34 @@ body {
 .nav > p {
   letter-spacing: 3px;
   font-weight: 700;
-  color: rgba(121, 116, 116, 0.5);
+  color: rgba(56, 53, 53, 0.5);
+}
+
+.bgColor {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  right: 50px;
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(56, 53, 53, 0.5);
+}
+.bg-btn {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+}
+#bgColor-red {
+  background-color: #38cc77;
+}
+#bgColor-blue {
+  background-color: black;
+}
+#bgColor-yellow {
+  background-color: white;
 }
 
 #logo {

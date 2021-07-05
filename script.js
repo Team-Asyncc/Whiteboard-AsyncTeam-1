@@ -1,4 +1,7 @@
 // constants and variables
+const activeToolEl = document.getElementById('active-tool');
+const downloadBtn = document.getElementById('download');
+
 const canvas = /** @type {HTMLCanvasElement} */ (
   document.getElementById('canvas')
 );
@@ -31,6 +34,7 @@ function startPosition(e) {
   ctx.beginPath();
   draw(e);
 }
+
 function endPosition() {
   undoTracker.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
   index += 1;
@@ -38,6 +42,7 @@ function endPosition() {
   painting = false;
   ctx.beginPath();
 }
+
 function draw(e) {
   if (!painting) return;
   ctx.lineWidth = pen.width;
@@ -59,6 +64,7 @@ canvas.addEventListener('mousemove', draw);
 penColor.forEach((pcolor) => {
   pcolor.addEventListener('click', changePenColor);
 });
+
 function changePenColor() {
   // console.log(this.value);
   pen.color = this.value;
@@ -73,10 +79,13 @@ const penIcon = document.getElementById('pen-icon');
 const penContainer = document.getElementsByClassName('pen-container')[0];
 
 penIcon.addEventListener('click', () => {
+  activeToolEl.textContent = 'Pen Tool';
   penContainer.classList.toggle('display-pen-container');
   removelisteners(starterase, enderase, eraseit);
   removelisteners(startline, endline, drawline);
   removelisteners(circleStart, circleEnd, circleDraw);
+  removelisteners(rectStart, rectEnd, rectDraw);
+
   canvas.addEventListener('mousedown', startPosition);
   canvas.addEventListener('mouseup', endPosition);
   canvas.addEventListener('mousemove', draw);
@@ -136,16 +145,19 @@ const eraser = {
   height: 50,
   width: 50,
 };
+
 function starterase(e) {
   erase = true;
   eraser.width = eraseSlider.value;
   eraser.height = eraseSlider.value;
   draw(e);
 }
+
 function enderase() {
   erase = false;
   ctx.beginPath();
 }
+
 function eraseit(e) {
   if (!erase) return;
   ctx.clearRect(
@@ -156,12 +168,15 @@ function eraseit(e) {
   );
 }
 eraserBtn.addEventListener('click', () => {
+  activeToolEl.textContent = 'Eraser';
   canvas.addEventListener('mousedown', starterase);
   canvas.addEventListener('mouseup', enderase);
   canvas.addEventListener('mousemove', eraseit);
   removelisteners(circleStart, circleEnd, circleDraw);
   removelisteners(startPosition, endPosition, draw);
   removelisteners(startline, endline, drawline);
+  removelisteners(rectStart, rectEnd, rectDraw);
+
   document
     .getElementsByClassName('slidecontainerforeraser')[0]
     .classList.toggle('display-pen-container');
@@ -175,9 +190,12 @@ function removelisteners(a, b, c) {
 // line drawing feature ------------------------------
 const linedraw = document.getElementById('line');
 linedraw.addEventListener('click', () => {
+  activeToolEl.textContent = 'Line';
   removelisteners(starterase, enderase, eraseit);
   removelisteners(startPosition, endPosition, draw);
   removelisteners(circleStart, circleEnd, circleDraw);
+  removelisteners(rectStart, rectEnd, rectDraw);
+
   canvas.addEventListener('mousedown', startline);
   canvas.addEventListener('mouseup', endline);
   canvas.addEventListener('mousemove', drawline);
@@ -203,6 +221,7 @@ function endline(e) {
   undoTracker.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
   index += 1;
 }
+
 function drawline() {}
 
 /* Undo  ------------------------------------*/
@@ -210,12 +229,13 @@ const undo = document.getElementById('undo');
 undo.addEventListener('click', doUndo);
 
 function doUndo() {
+  activeToolEl.textContent = 'Undo';
   if (index <= 0) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
   index -= 1;
   undoTracker.pop();
-  ctx.putImageData(undoTracker[index], 0, 0);
+  if (index > -1) ctx.putImageData(undoTracker[index], 0, 0);
 }
 
 // control bar cursor hide
@@ -239,13 +259,15 @@ icons.forEach((icon) => {
   // })
 });
 
-//Shape feature
+//Circle Shape feature
 const circleShape = document.getElementById('circleShape');
 circleShape.addEventListener('click', () => {
+  activeToolEl.textContent = 'Circle';
   console.log('shape clicked');
   removelisteners(startPosition, endPosition, draw);
   removelisteners(startline, endline, drawline);
   removelisteners(starterase, enderase, eraseit);
+  removelisteners(rectStart, rectEnd, rectDraw);
   canvas.addEventListener('mousedown', circleStart);
   canvas.addEventListener('mouseup', circleEnd);
   canvas.addEventListener('mousemove', circleDraw);
@@ -253,6 +275,7 @@ circleShape.addEventListener('click', () => {
 
 let div, posY;
 let makeShape = false;
+
 function circleStart(e) {
   makeShape = true;
   div = document.createElement('div');
@@ -262,12 +285,15 @@ function circleStart(e) {
   posY = e.clientY;
   document.body.append(div);
 }
+
 function circleDraw(e) {
   if (!makeShape) return;
   let coordinate = Math.abs(posY - e.clientY);
   div.style.height = `${coordinate}px`;
   div.style.width = `${coordinate}px`;
+  div.style.background = `${pen.color}`;
 }
+
 function circleEnd() {
   removelisteners(circleStart, circleEnd, circleDraw);
   makeShape = false;
@@ -277,9 +303,87 @@ function circleEnd() {
   let top = window.getComputedStyle(cc).top.slice(0, -2);
   let width = window.getComputedStyle(cc).width.slice(0, -2);
   ctx.arc(left, top, width / 2, 0, 360);
-  document.body.removeChild(cc);
   ctx.fillStyle = pen.color;
-  ctx.stroke();
+  document.body.removeChild(cc);
+  ctx.fill();
   undoTracker.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
   index += 1;
 }
+// shape box
+const shapes = document.querySelector('#shapes');
+
+shapes.addEventListener('click', () => {
+  const cont = document.querySelector('.shape-container');
+  console.log(cont);
+  cont.classList.toggle('show-shapes');
+});
+
+//rectagle shape
+
+const rectShape = document.getElementById('rectShape');
+rectShape.addEventListener('click', () => {
+  activeToolEl.textContent = 'Rectangle';
+  console.log('shape clicked');
+  removelisteners(startPosition, endPosition, draw);
+  removelisteners(startline, endline, drawline);
+  removelisteners(starterase, enderase, eraseit);
+  removelisteners(circleStart, circleEnd, circleDraw);
+  canvas.addEventListener('mousedown', rectStart);
+  canvas.addEventListener('mouseup', rectEnd);
+  canvas.addEventListener('mousemove', rectDraw);
+});
+
+let rectdiv, rectposY, rectposX;
+let makerectShape = false;
+
+function rectStart(e) {
+  makerectShape = true;
+  rectdiv = document.createElement('div');
+  rectdiv.classList.add('rect-shape');
+  rectdiv.style.top = `${e.clientY}px`;
+  rectdiv.style.left = `${e.clientX}px`;
+  rectposY = e.clientY;
+  rectposX = e.clientX;
+  document.body.append(rectdiv);
+}
+
+function rectDraw(e) {
+  if (!makerectShape) return;
+  let xcoordinate = Math.abs(rectposX - e.clientX);
+  let ycoordinate = Math.abs(rectposY - e.clientY);
+  rectdiv.style.background = `${pen.color}`;
+  rectdiv.style.height = `${ycoordinate}px`;
+  rectdiv.style.width = `${xcoordinate}px`;
+}
+
+function rectEnd() {
+  removelisteners(rectStart, rectEnd, rectDraw);
+  makeShape = false;
+  ctx.beginPath();
+  const cc = document.getElementsByClassName('rect-shape')[0];
+  console.log(cc);
+  let left = window.getComputedStyle(cc).left.slice(0, -2);
+  let top = window.getComputedStyle(cc).top.slice(0, -2);
+  let width = window.getComputedStyle(cc).width.slice(0, -2);
+  let height = window.getComputedStyle(cc).height.slice(0, -2);
+  ctx.fillStyle = pen.color;
+  ctx.fillRect(left, top, width, height);
+  document.body.removeChild(cc);
+  undoTracker.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  index += 1;
+}
+
+function switchToPenTool() {
+  isEraser = false;
+  activeToolEl.textContent = 'Brush';
+
+}
+
+// Download Image
+downloadBtn.addEventListener('click', () => {
+  downloadBtn.href = canvas.toDataURL('image/jpeg', 1);
+  downloadBtn.download = 'whiteboard-snap.jpeg';
+  // Active Tool
+  activeToolEl.textContent = 'Image Saved';
+  setTimeout(switchToPenTool, 1500);
+});

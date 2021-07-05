@@ -273,6 +273,7 @@ function circleEnd() {
   makeShape = false;
   ctx.beginPath();
   const cc = document.getElementsByClassName('circle-shape')[0];
+  console.log(cc);
   let left = window.getComputedStyle(cc).left.slice(0, -2);
   let top = window.getComputedStyle(cc).top.slice(0, -2);
   let width = window.getComputedStyle(cc).width.slice(0, -2);
@@ -283,3 +284,12 @@ function circleEnd() {
   undoTracker.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
   index += 1;
 }
+// shape box
+const shapes=document.querySelector('#shapes');
+
+shapes.addEventListener( 'click' ,()=>{
+  const cont=document.querySelector('.shape-container');
+  console.log(cont);
+  cont.classList.add('show-shapes');
+
+} )

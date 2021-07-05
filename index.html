@@ -26,18 +26,40 @@
           </ul>
         </div> -->
   </div>
+  <div class="left-tool-bar">
+      <div class="main-color-picker">
+        <button
+          class="color color-swatch-black pen-color"
+          value="#3c4043"
+        ></button>
+        <button
+          class="color color-swatch-blue pen-color"
+          value="#19acc0"
+        ></button>
+        <button
+          class="color color-swatch-red pen-color"
+          value="#d9453c"
+        ></button>
+        <button
+          class="color color-swatch-white pen-color"
+          value="#fff"
+        ></button>
+      </div>
+      <div class="custom-color-picker">
+        <button class="color-picker pen-color" id="colorPickerBtn"></button>
+      </div>
+    </div>
   <canvas id="canvas"></canvas>
   <div class="control-bar">
-
     <div class="active-tool">
       <span id="active-tool" title="Active Tool">Pen Tool</span>
     </div>
-
     <div class="icon" id="pen-icon">
       <img src="https://img.icons8.com/material-sharp/96/000000/edit--v1.png" />
       <div class="pen-container">
         <div class="slidecontainer">
           <input type="range" min="2" max="20" value="2" class="slider" id="penSlider" />
+
         </div>
         <div class="penColor" id="penColor">
           <button class="red-color pen-color" value="red"></button>

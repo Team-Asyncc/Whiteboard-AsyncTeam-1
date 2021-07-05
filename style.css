@@ -178,17 +178,13 @@ img {
 
 .pen-container {
   position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  top: -150px;
-  left: 25px;
+  top: -50px;
+  left: 10px;
   height: fit-content;
   width: fit-content;
   display: none;
   background-color: rgba(121, 121, 121, 0.8);
   padding: 0.5rem;
-  gap: 1rem;
   border-radius: 0.25rem;
 }
 
@@ -213,6 +209,10 @@ img {
 
 .lightblue-color {
   background-color: lightblue;
+}
+
+.slidecontainer {
+  transform: scale(calc(1 / 1.2));
 }
 
 #eraser .slidecontainerforeraser {
@@ -271,6 +271,58 @@ img {
   width: 30px;
 }
 
+.left-tool-bar {
+  position: absolute;
+  left: 15px;
+  z-index: 5;
+}
+
+.main-color-picker {
+  display: flex;
+  flex-direction: column;
+  /* position: absolute; */
+  padding: 10px;
+  /* left: 15px; */
+  border-radius: 20px;
+  border: 0.5px solid rgba(121, 121, 121, 0.3);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* z-index: 5; */
+}
+
+.color {
+  outline: none;
+  border: none;
+  height: 20px;
+  width: 20px;
+  background-color: aqua;
+  border-radius: 100%;
+  margin: 6px 4px;
+  cursor: pointer;
+}
+
+.custom-color-picker {
+  margin-top: 1rem;
+  padding: 12px;
+}
+
+/* * Utils  */
+.color-swatch-black {
+  background-color: #3c4043;
+}
+
+.color-swatch-blue {
+  background-color: #19acc0;
+}
+
+.color-swatch-red {
+  background-color: #d9453c;
+}
+
+.color-swatch-white {
+  background-color: #fff;
+  border: 0.5px solid grey;
+}
+
 #shapes .shape-container .shape-btn:hover {
   opacity: 0.6;
 }
@@ -295,9 +347,6 @@ img {
   background-color: black;
   opacity: 0.6;
 }
-
-
-
 
 .active-tool>span {
   background-color: rgb(82, 82, 82);
@@ -325,3 +374,4 @@ img {
 .far:hover {
   filter: brightness(90%);
 }
+

@@ -157,6 +157,7 @@ img {
 } */
 .icon {
   width: 40px;
+  position: relative;
   height: 40px;
   z-index: 2;
   padding: 5px;
@@ -229,6 +230,7 @@ img {
 .hide {
   display: none;
 }
+/* for display in canvas */
 .circle-shape {
   position: absolute;
   background-color: black;
@@ -236,3 +238,22 @@ img {
   transform: translate(-50%, -50%);
   opacity: 0.2;
 }
+#shapes .shape-container{
+  display: none;
+  position: absolute;
+  bottom:30px ;
+  left:0;
+  height:40px;
+  width:100px;
+}
+#shapes .shape-container .shape-btn{
+height: 80%;
+width: 30px;
+background-color: red;
+
+}
+.show-shapes{
+  display: flex !important; 
+  gap:5px;
+}
+

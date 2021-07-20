@@ -351,9 +351,6 @@ function rectDraw(e) {
   if (!makerectShape) return;
   let xcoordinate = Math.abs(rectposX - e.clientX);
   let ycoordinate = Math.abs(rectposY - e.clientY);
-
-  rectdiv.style.top = `${Math.min(rectposY, e.clientY)}px`;
-  rectdiv.style.left = `${Math.min(rectposX, e.clientX)}px`;
   rectdiv.style.background = `${pen.color}`;
   rectdiv.style.height = `${ycoordinate}px`;
   rectdiv.style.width = `${xcoordinate}px`;
